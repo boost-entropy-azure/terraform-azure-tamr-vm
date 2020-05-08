@@ -1,2 +1,3 @@
-# Tamr Terraform Template Repo - v0.1.0 - Feb 25th 2020
-* Initing project
+# Tamr Azure VM module - v0.1.0 - May 8th 2020
+## Added
+* Tamr Azure VM module
