@@ -82,3 +82,9 @@ variable "public_ip" {
     default = null
     type = string
 }
+
+variable "tags" {
+    type = map(string)
+    description = "Map of tags to attach to VM and Network Interface"
+    default = {}
+}

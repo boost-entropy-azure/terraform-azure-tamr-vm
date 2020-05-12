@@ -20,6 +20,7 @@ Smallest complete fully working example. This example might require extra resour
 This modules creates:
 * 1 network interface
 * 1 VM
+* 1 storage disk
 
 # Variables 
 ## Inputs
@@ -38,6 +39,7 @@ Write your Terraform module inputs.
 * `admin_username`: (optional) Admin username
 * `network_sec_gr_id`: (optional) Network security group id
 * `public_ip`: (optional) Public ip
+* `tags`: (optional) Map of tags to attach to VM and Network Interface
 
 ## Outputs
 * `vm_id`: ID of the Tamr VM

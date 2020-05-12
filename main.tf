@@ -11,6 +11,8 @@ resource "azurerm_network_interface" "tamr-vm-nic" {
 
     public_ip_address_id = var.public_ip
   }
+  
+  tags = var.tags
 }
 
 locals {
@@ -60,4 +62,6 @@ resource "azurerm_virtual_machine" "tamr-vm" {
       path     = "/home/${var.admin_username}/.ssh/authorized_keys"
     }
   }
+  
+  tags = var.tags
 }
