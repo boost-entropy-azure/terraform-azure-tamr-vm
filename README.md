@@ -40,7 +40,8 @@ Write your Terraform module inputs.
 * `public_ip`: (optional) Public ip
 
 ## Outputs
-No output variables.
+* `vm_id`: ID of the Tamr VM
+* `nic_id`: ID of the network interface
 
 # References
 This repo is based on:
