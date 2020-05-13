@@ -1,9 +1,10 @@
-output "null_resource_id" {
-  value       = "${null_resource.foo.id}"
-  description = "An arbitrary value that changes each time the resource is replaced."
+output "vm_id" {
+    value = azurerm_virtual_machine.tamr-vm.id
+    description = "The ID of the Tamr VM"
 }
 
-output "example_value" {
-  value       = "${var.example}"
-  description = "Example variable."
+output "nic_id" {
+    value = azurerm_network_interface.tamr-vm-nic.id
+    description = "The ID of the Network Interface"
 }
+

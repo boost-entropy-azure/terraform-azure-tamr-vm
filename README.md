@@ -1,8 +1,10 @@
-# Terraform Module Template
-This is a template github repo, for a terraform module. A new terraform module, should use this as its starting point.
-This repo follows the [terraform standard module structure](https://www.terraform.io/docs/modules/index.html#standard-module-structure).
+# Tamr Azure VM module
+
+This module creates an Azure VM to host the Tamr application and its
+internal microservices.
 
 # Examples
+TO BE UPDATED
 ## Basic
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
@@ -16,17 +18,32 @@ Smallest complete fully working example. This example might require extra resour
 
 # Resources Created
 This modules creates:
-* a null resource
+* 1 network interface
+* 1 VM
+* 1 storage disk
 
 # Variables 
 ## Inputs
 Write your Terraform module inputs.
-* `example` (optional): Example variable.
+* `resource_group_name`: (required) Name of resource group
+* `location`: (required) Location
+* `machine_type`: (required) Type of machine on which to deploy Tamr
+* `vnet_id`: (required) Virtual network in which to deploy VM
+* `subnet_id`: (required) Subnet in which to deploy VM
+* `existing_network_resource_group`: (rquired) Resource group which owns the VNet
+* `vm_name`: (optional) Name of VM on which Tamr is installed
+* `ssh_key_data`: (required) SSH key
+* `managed_disk_type`: (optional) Managed disk type
+* `disk_size_gb`: (optional) Disk size
+* `image_reference`: (optional) Base image for VM
+* `admin_username`: (optional) Admin username
+* `network_sec_gr_id`: (optional) Network security group id
+* `public_ip`: (optional) Public ip
+* `tags`: (optional) Map of tags to attach to VM and Network Interface
 
 ## Outputs
-Write your Terraform module outputs.
-* `null_resource_id`: An arbitrary value that changes each time the resource is replaced.
-* `example_value`: Example variable.
+* `vm_id`: ID of the Tamr VM
+* `nic_id`: ID of the network interface
 
 # References
 This repo is based on:
