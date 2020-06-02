@@ -83,6 +83,54 @@ variable "public_ip" {
     type = string
 }
 
+variable "tamr_port" {
+    description = "Port hosting Tamr UI and API access"
+    default = 9100
+    type = number
+}
+
+variable "kibana_port" {
+    description = "Port hosting Kibana access"
+    default = 5601
+    type = number
+}
+
+variable "grafana_port" {
+    description = "Port hosting Grafana access"
+    default = 31101
+    type = number
+}
+
+variable "enable_kibana_port" {
+    description = "Whether or not to enable Kibana"
+    default = true
+    type = bool
+}
+
+variable "enable_grafana_port" {
+    description = "Whether or not to enable Grafana"
+    default = true
+    type = bool
+}
+
+variable "enable_tls" {
+    description = "Whether or not to enable TLS"
+    default = true
+    type = bool
+}
+
+variable "enable_ssh" {
+    description = "Whether or not to enable SSH"
+    default = true
+    type = bool
+}
+
+variable "ingress_cidr_blocks" {
+  type = list(string)
+  description = "CIDR blocks to attach to security groups for ingress"
+  default = []
+}
+
 variable "tags" {
     type = map(string)
     description = "Map of tags to attach to VM and Network Interface"

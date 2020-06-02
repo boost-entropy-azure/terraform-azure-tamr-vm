@@ -9,7 +9,7 @@ TO BE UPDATED
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
 module "minimal" {
-  source = "git::https://github.com/Datatamer/terraform-template-repo?ref=0.1.0"
+  source = "git::https://github.com/Datatamer/terraform-template-repo?ref=0.2.0"
 }
 ```
 ## Minimal
@@ -21,6 +21,7 @@ This modules creates:
 * 1 network interface
 * 1 VM
 * 1 storage disk
+* 1 security group
 
 # Variables 
 ## Inputs
@@ -39,11 +40,20 @@ Write your Terraform module inputs.
 * `admin_username`: (optional) Admin username
 * `network_sec_gr_id`: (optional) Network security group id
 * `public_ip`: (optional) Public ip
+* `tamr_port`: (optional) Port hosting Tamr UI and API access
+* `enable_kibana_port`: (optional) Whether or not to enable Kibana
+* `kibana_port`: (optional) Port hosting Kibana access
+* `enable_grafana_port`: (optional) Whether or not to enable Grafana
+* `grafana_port`: (optional) Port hosting Grafana access
+* `enable_tls`: (optional) Whether or not to enable TLS
+* `enable_ssh`: (optional) Whether or not to enable SSH
+* `ingress_cidr_blocks`: (optional) CIDR blocks to attach to security groups for ingress
 * `tags`: (optional) Map of tags to attach to VM and Network Interface
 
 ## Outputs
 * `vm_id`: ID of the Tamr VM
 * `nic_id`: ID of the network interface
+* `sg_id`: ID of the security group
 
 # References
 This repo is based on:
