@@ -73,11 +73,6 @@ variable "admin_username" {
     default = "ubuntu"
 }
 
-variable "network_sec_gr_id" {
-    default = null
-    type = string
-}
-
 variable "public_ip" {
     default = null
     type = string
@@ -98,6 +93,12 @@ variable "kibana_port" {
 variable "grafana_port" {
     description = "Port hosting Grafana access"
     default = 31101
+    type = number
+}
+
+variable "elasticsearch_port" {
+    description = "Port hosting Elasticsearch access"
+    default = 9200
     type = number
 }
 
@@ -123,6 +124,18 @@ variable "enable_ssh" {
     description = "Whether or not to enable SSH"
     default = true
     type = bool
+}
+
+variable "enable_elasticsearch_port" {
+    description = "Whether or not to enable Elasticsearch"
+    default = true
+    type = bool
+}
+
+variable "application_security_group_ids" {
+    description = "List of Application security group IDs"
+    default = []
+    type = list(string)
 }
 
 variable "ingress_cidr_blocks" {

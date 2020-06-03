@@ -9,12 +9,12 @@ TO BE UPDATED
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
 module "minimal" {
-  source = "git::https://github.com/Datatamer/terraform-template-repo?ref=0.2.0"
+  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm?ref=0.2.0"
 }
 ```
 ## Minimal
 Smallest complete fully working example. This example might require extra resources to run the example.
-- [Minimal](https://github.com/Datatamer/terraform-template-repo/tree/master/examples/minimal)
+- [Minimal](https://github.com/Datatamer/terraform-azure-tamr-vm/tree/master/examples/minimal)
 
 # Resources Created
 This modules creates:
@@ -38,16 +38,18 @@ Write your Terraform module inputs.
 * `disk_size_gb`: (optional) Disk size
 * `image_reference`: (optional) Base image for VM
 * `admin_username`: (optional) Admin username
-* `network_sec_gr_id`: (optional) Network security group id
 * `public_ip`: (optional) Public ip
 * `tamr_port`: (optional) Port hosting Tamr UI and API access
 * `enable_kibana_port`: (optional) Whether or not to enable Kibana
 * `kibana_port`: (optional) Port hosting Kibana access
 * `enable_grafana_port`: (optional) Whether or not to enable Grafana
 * `grafana_port`: (optional) Port hosting Grafana access
+* `enable_elasticsearch_port`: (optional) Whether or not to enable Elasticsearch
+* `elasticsearch_port`: (optional) Port hosting Elasticsearch access
 * `enable_tls`: (optional) Whether or not to enable TLS
 * `enable_ssh`: (optional) Whether or not to enable SSH
 * `ingress_cidr_blocks`: (optional) CIDR blocks to attach to security groups for ingress
+* `application_security_group_ids`: (Optional) List of Application security group IDs
 * `tags`: (optional) Map of tags to attach to VM and Network Interface
 
 ## Outputs
