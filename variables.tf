@@ -12,29 +12,13 @@ variable "location" {
     type = string
 }
 
-variable "machine_type" {
-    description = "Type of machine on which to deploy Tamr"
-    type = string
-}
-
-variable "vnet_id" {
-    description = "Virtual network in which to deploy VM"
+variable "vm_size" {
+    description = "Size of machine on which to deploy Tamr"
     type = string
 }
 
 variable "subnet_id" {
-    description = "Subnet in which to deploy VM"
-    type = string
-}
-
-data "azurerm_subnet" "subnet" {
-    resource_group_name = var.existing_network_resource_group
-    virtual_network_name = var.vnet_id
-    name = var.subnet_id
-}
-
-variable "existing_network_resource_group" {
-    description = "Resource group which owns the VNet"
+    description = "Subnet ID in which to deploy VM"
     type = string
 }
 

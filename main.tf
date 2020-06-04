@@ -5,7 +5,7 @@ resource "azurerm_network_interface" "tamr-vm-nic" {
 
   ip_configuration {
     name                          = "${var.vm_name}-nic"
-    subnet_id                     = data.azurerm_subnet.subnet.id
+    subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
 
     public_ip_address_id = var.public_ip
@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "tamr-vm" {
     azurerm_network_interface.tamr-vm-nic.id,
   ]
 
-  vm_size = var.machine_type
+  vm_size = var.vm_size
 
   delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true

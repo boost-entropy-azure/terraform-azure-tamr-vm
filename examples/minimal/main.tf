@@ -33,10 +33,8 @@ module "vm" {
   vm_name = "minimal-example-vm"
   resource_group_name = azurerm_resource_group.vm-rg.name
   location = azurerm_resource_group.vm-rg.location
-  existing_network_resource_group = azurerm_resource_group.vm-rg.name
-  vnet_id = azurerm_virtual_network.vm-vnet.name
-  subnet_id = azurerm_subnet.vm-subnet.name
-  machine_type = "Standard_D2s_v3"
+  subnet_id = azurerm_subnet.vm-subnet.id
+  vm_size = "Standard_D2s_v3"
   managed_disk_type = "Premium_LRS"
   disk_size_gb = 100
 
