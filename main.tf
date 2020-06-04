@@ -187,7 +187,7 @@ resource "azurerm_network_security_rule" "ssh-rule" {
   protocol = "Tcp"
 
   source_address_prefixes = var.ingress_cidr_blocks
-  source_port_range = 22
+  source_port_range = "*"
 
   destination_address_prefix = "*"
   destination_port_range = 22
@@ -218,7 +218,7 @@ resource "azurerm_network_security_rule" "app-group-tamr" {
   name = "Application security groups Tamr"
   description = "Traffic from allow application security groups to Tamr APIs"
   direction = "Inbound"
-  priority = 1007
+  priority = 1009
   access = "Allow"
   protocol = "Tcp"
 
