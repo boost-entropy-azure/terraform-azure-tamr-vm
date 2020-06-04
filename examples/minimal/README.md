@@ -4,7 +4,6 @@
 | Name | Version |
 |------|---------|
 | azurerm | =2.11.0 |
-| template | ~> 2.1.2 |
 
 ## Providers
 
