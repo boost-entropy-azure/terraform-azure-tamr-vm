@@ -132,6 +132,42 @@ variable "enable_elasticsearch_port" {
     type = bool
 }
 
+variable "enable_auth_port" {
+    description = "Whether or not to enable Auth"
+    default = true
+    type = bool
+}
+
+variable "auth_port" {
+    description = "Port hosting Auth access"
+    default = 9020
+    type = number
+}
+
+variable "enable_persistence_port" {
+    description = "Whether or not to enable Persistence"
+    default = true
+    type = bool
+}
+
+variable "persistence_port" {
+    description = "Port hosting Persistence access"
+    default = 9080
+    type = number
+}
+
+variable "enable_zk_port" {
+    description = "Whether or not to enable Zookeeper"
+    default = true
+    type = bool
+}
+
+variable "zk_port" {
+    description = "Port hosting Zookeeper access"
+    default = 21281
+    type = number
+}
+
 variable "application_security_group_ids" {
     description = "List of Application security group IDs"
     default = []

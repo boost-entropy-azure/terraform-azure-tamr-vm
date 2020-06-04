@@ -87,7 +87,7 @@ resource "azurerm_network_security_rule" "tamr-rule" {
   protocol = "Tcp"
 
   source_address_prefixes = var.ingress_cidr_blocks
-  source_port_range = var.tamr_port
+  source_port_range = "*"
 
   destination_address_prefix = "*"
   destination_port_range = var.tamr_port
@@ -107,7 +107,7 @@ resource "azurerm_network_security_rule" "kibana-rule" {
   protocol = "Tcp"
 
   source_address_prefixes = var.ingress_cidr_blocks
-  source_port_range = var.kibana_port
+  source_port_range = "*"
 
   destination_address_prefix = "*"
   destination_port_range = var.kibana_port
@@ -127,7 +127,7 @@ resource "azurerm_network_security_rule" "grafana-rule" {
   protocol = "Tcp"
 
   source_address_prefixes = var.ingress_cidr_blocks
-  source_port_range = var.grafana_port
+  source_port_range = "*"
 
   destination_address_prefix = "*"
   destination_port_range = var.grafana_port
@@ -147,7 +147,7 @@ resource "azurerm_network_security_rule" "tls-rule" {
   protocol = "Tcp"
 
   source_address_prefixes = var.ingress_cidr_blocks
-  source_port_range = 443
+  source_port_range = "*"
 
   destination_address_prefix = "*"
   destination_port_range = 443
@@ -162,7 +162,7 @@ resource "azurerm_network_security_rule" "es-rule" {
   name = "Elasticsearch"
   description = "Elasticsearch from allowed CIDR blocks"
   direction = "Inbound"
-  priority = 1007
+  priority = 1005
   access = "Allow"
   protocol = "Tcp"
 
@@ -182,7 +182,7 @@ resource "azurerm_network_security_rule" "ssh-rule" {
   name = "SSH"
   description = "SSH from allowed CIDR blocks"
   direction = "Inbound"
-  priority = 1005
+  priority = 1006
   access = "Allow"
   protocol = "Tcp"
 
@@ -200,12 +200,12 @@ resource "azurerm_network_security_rule" "http-rule" {
   name = "HTTP"
   description = "HTTP from allowed CIDR blocks"
   direction = "Inbound"
-  priority = 1006
+  priority = 1007
   access = "Allow"
   protocol = "Tcp"
 
   source_address_prefixes = var.ingress_cidr_blocks
-  source_port_range = 80
+  source_port_range = "*"
 
   destination_address_prefix = "*"
   destination_port_range = 80
@@ -214,11 +214,71 @@ resource "azurerm_network_security_rule" "http-rule" {
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
-resource "azurerm_network_security_rule" "app-group-tamr" {
-  name = "Application security groups Tamr"
-  description = "Traffic from allow application security groups to Tamr APIs"
+resource "azurerm_network_security_rule" "auth-rule" {
+  count = var.enable_auth_port ? 1 : 0
+
+  name = "Auth"
+  description = "Auth from allowed CIDR blocks"
+  direction = "Inbound"
+  priority = 1008
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_address_prefixes = var.ingress_cidr_blocks
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.auth_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "persistence-rule" {
+  count = var.enable_persistence_port ? 1 : 0
+
+  name = "Persistence"
+  description = "Persistence from allowed CIDR blocks"
   direction = "Inbound"
   priority = 1009
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_address_prefixes = var.ingress_cidr_blocks
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.persistence_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "zk-rule" {
+  count = var.enable_zk_port ? 1 : 0
+
+  name = "ZK"
+  description = "Zookeeper from allowed CIDR blocks"
+  direction = "Inbound"
+  priority = 1010
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_address_prefixes = var.ingress_cidr_blocks
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.zk_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "tamr-app-group-rule" {
+  name = "App security group Tamr"
+  description = "Tamr UI and API access from allowed application security groups"
+  direction = "Inbound"
+  priority = 1011
   access = "Allow"
   protocol = "Tcp"
 
@@ -232,13 +292,73 @@ resource "azurerm_network_security_rule" "app-group-tamr" {
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
-resource "azurerm_network_security_rule" "app-group-es" {
+resource "azurerm_network_security_rule" "kibana-app-group-rule" {
+  count = var.enable_kibana_port ? 1 : 0
+
+  name = "App security group Kibana"
+  description = "Kibana port from allowed application security groups"
+  direction = "Inbound"
+  priority = 1012
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.kibana_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "grafana-app-group-rule" {
+  count = var.enable_grafana_port ? 1 : 0
+
+  name = "App security group Grafana"
+  description = "Grafana port from allowed application security groups"
+  direction = "Inbound"
+  priority = 1013
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.grafana_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "tls-app-group-rule" {
+  count = var.enable_tls ? 1 : 0
+
+  name = "App security group HTTPS"
+  description = "TLS from allowed application security groups"
+  direction = "Inbound"
+  priority = 1014
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = 443
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "es-app-group-rule" {
   count = var.enable_elasticsearch_port ? 1 : 0
 
-  name = "Application security groups Elasticsearch"
-  description = "Traffic from allow application security groups to Elasticsearch APIs"
+  name = "App security group Elasticsearch"
+  description = "Elasticsearch from allowed application security groups"
   direction = "Inbound"
-  priority = 1008
+  priority = 1015
   access = "Allow"
   protocol = "Tcp"
 
@@ -247,6 +367,104 @@ resource "azurerm_network_security_rule" "app-group-es" {
 
   destination_address_prefix = "*"
   destination_port_range = var.elasticsearch_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "ssh-app-group-rule" {
+  count = var.enable_ssh ? 1 : 0
+
+  name = "App security group SSH"
+  description = "SSH from allowed application security groups"
+  direction = "Inbound"
+  priority = 1016
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = 22
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "http-app-group-rule" {
+  name = "App security group HTTP"
+  description = "HTTP from allowed application security groups"
+  direction = "Inbound"
+  priority = 1017
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = 80
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "auth-app-group-rule" {
+  count = var.enable_auth_port ? 1 : 0
+
+  name = "App security group Auth"
+  description = "Auth from allowed application security groups"
+  direction = "Inbound"
+  priority = 1018
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.auth_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "persistence-app-group-rule" {
+  count = var.enable_persistence_port ? 1 : 0
+
+  name = "App security group Persistence"
+  description = "Persistence from allowed application security groups"
+  direction = "Inbound"
+  priority = 1019
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.persistence_port
+
+  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
+}
+
+resource "azurerm_network_security_rule" "zk-app-group-rule" {
+  count = var.enable_zk_port ? 1 : 0
+
+  name = "App security group ZK"
+  description = "Zookeeper from allowed application security groups"
+  direction = "Inbound"
+  priority = 1020
+  access = "Allow"
+  protocol = "Tcp"
+
+  source_application_security_group_ids = var.application_security_group_ids
+  source_port_range = "*"
+
+  destination_address_prefix = "*"
+  destination_port_range = var.zk_port
 
   resource_group_name = data.azurerm_resource_group.tamr_rg.name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
