@@ -4,7 +4,6 @@ This module creates an Azure VM to host the Tamr application and its
 internal microservices.
 
 # Examples
-TO BE UPDATED
 ## Basic
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
@@ -64,7 +63,7 @@ This modules creates:
 | kibana\_port | Port hosting Kibana access | `number` | `5601` | no |
 | managed\_disk\_type | Managed disk type | `string` | `"Premium_LRS"` | no |
 | persistence\_port | Port hosting Persistence access | `number` | `9080` | no |
-| public\_ip | n/a | `string` | `null` | no |
+| public\_ip | Public IP address to assign to the VM | `string` | `null` | no |
 | tags | Map of tags to attach to VM and Network Interface | `map(string)` | `{}` | no |
 | tamr\_port | Port hosting Tamr UI and API access | `number` | `9100` | no |
 | vm\_name | Name of VM on which Tamr is installed | `string` | `"tamr-vm"` | no |
