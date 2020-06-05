@@ -1,5 +1,7 @@
 resource "azurerm_network_interface" "tamr-vm-nic" {
-  name                = "${var.vm_name}-nic"
+  count = var.instance_count
+
+  name                = "${var.vm_name}-${count.index}-nic"
   location            = var.location
   resource_group_name = data.azurerm_resource_group.tamr_rg.name
 
@@ -15,7 +17,9 @@ resource "azurerm_network_interface" "tamr-vm-nic" {
 }
 
 resource "azurerm_network_interface_security_group_association" "nsg-assoc" {
-  network_interface_id      = azurerm_network_interface.tamr-vm-nic.id
+  count = var.instance_count
+
+  network_interface_id      = azurerm_network_interface.tamr-vm-nic[count.index].id
   network_security_group_id = azurerm_network_security_group.tamr-vm-sg.id
 }
 
@@ -24,11 +28,14 @@ locals {
 }
 
 resource "azurerm_virtual_machine" "tamr-vm" {
-  name                = var.vm_name
+  count = var.instance_count
+
+  name                = "${var.vm_name}-${count.index}"
   location            = var.location
   resource_group_name = data.azurerm_resource_group.tamr_rg.name
+
   network_interface_ids = [
-    azurerm_network_interface.tamr-vm-nic.id,
+    azurerm_network_interface.tamr-vm-nic[count.index].id,
   ]
 
   vm_size = var.vm_size
@@ -47,7 +54,7 @@ resource "azurerm_virtual_machine" "tamr-vm" {
   }
 
   storage_os_disk {
-    name              = "${var.vm_name}-disk"
+    name              = "${var.vm_name}-disk-${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = var.managed_disk_type
@@ -79,6 +86,8 @@ resource "azurerm_network_security_group" "tamr-vm-sg" {
 }
 
 resource "azurerm_network_security_rule" "tamr-rule" {
+  count = var.enable_tamr_port ? 1 : 0
+
   name        = "Tamr"
   description = "Tamr UI and API access from allowed CIDR blocks"
   direction   = "Inbound"
@@ -275,6 +284,8 @@ resource "azurerm_network_security_rule" "zk-rule" {
 }
 
 resource "azurerm_network_security_rule" "tamr-app-group-rule" {
+  count = var.enable_tamr_port ? 1 : 0
+
   name        = "App security group Tamr"
   description = "Tamr UI and API access from allowed application security groups"
   direction   = "Inbound"

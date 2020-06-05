@@ -1,4 +1,6 @@
 # Tamr Azure VM module - v0.3.0 - June 4th 2020
+* Add configurable `instance_count` to allow for creation of multiple VMs
+* Add example for elasticsearch cluster creation
 * Clarify variable naming
 * Lint terraform files
 # Tamr Azure VM module - v0.2.1 - June 3rd 2020

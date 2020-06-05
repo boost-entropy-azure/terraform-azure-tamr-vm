@@ -69,6 +69,12 @@ variable "tamr_port" {
   type        = number
 }
 
+variable "enable_tamr_port" {
+  description = "Whether or not to enable Tamr API access"
+  default     = true
+  type        = bool
+}
+
 variable "kibana_port" {
   description = "Port hosting Kibana access"
   default     = 5601
@@ -160,13 +166,19 @@ variable "application_security_group_ids" {
 }
 
 variable "ingress_cidr_blocks" {
-  type        = list(string)
   description = "CIDR blocks to attach to security groups for ingress"
+  type        = list(string)
   default     = []
 }
 
 variable "tags" {
-  type        = map(string)
   description = "Map of tags to attach to VM and Network Interface"
+  type        = map(string)
   default     = {}
+}
+
+variable "instance_count" {
+  description = "Number of VMs to create"
+  type        = number
+  default     = 1
 }
