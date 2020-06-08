@@ -13,6 +13,6 @@ output "vm-resource-group-id" {
 }
 
 output "vm-subnet-id" {
-    value = azurerm_subnet.vm-subnet.id
-    description = "The subnet created for the VM"
+  value       = azurerm_subnet.vm-subnet.id
+  description = "The subnet created for the VM"
 }
