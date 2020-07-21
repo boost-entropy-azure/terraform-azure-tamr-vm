@@ -49,8 +49,8 @@ variable "image_reference" {
   description = <<EOF
     The Azure Resource Manager (ARM) resource identifier of the Virtual Machine Image or Shared Image Gallery Image.
     Computes Compute Nodes of the Pool will be created using this Image Id.
-    This is of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}.
-    https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.virtualmachineimageid
+    This is of the form `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}`.
+    [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.virtualmachineimageid)
   EOF
   type        = string
   default     = null
@@ -60,7 +60,7 @@ variable "image_publisher" {
   description = <<EOF
   The publisher of the Azure Virtual Machines Marketplace Image.
   (e.g. 'Canonical', 'RedHat')
-  https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.publisher
+  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.publisher)
   EOF
   type        = string
   default     = "Canonical"
@@ -70,7 +70,7 @@ variable "image_offer" {
   description = <<EOF
   The offer type of the Azure Virtual Machines Marketplace Image.
   (e.g. 'UbuntuServer', 'RHEL')
-  https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.offer
+  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.offer)
   EOF
   type        = string
   default     = "UbuntuServer"
@@ -80,7 +80,7 @@ variable "image_sku" {
   description = <<EOF
   The Stock-Keeping Unit (SKU) of the Azure Virtual Machines Marketplace Image.
   (e.g. '18.04-LTS', '7.6')
-  https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.sku
+  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.sku)
   EOF
   type        = string
   default     = "18.04-LTS"
@@ -90,7 +90,7 @@ variable "image_version" {
   description = <<EOF
     The version of the Azure Virtual Machines Marketplace Image.
     (e.g. 'latest')
-    https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.version
+    [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.version)
   EOF
   type        = string
   default     = "latest"
