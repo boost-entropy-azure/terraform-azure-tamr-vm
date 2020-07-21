@@ -1,3 +1,9 @@
+# Tamr Azure VM module - v0.3.1 - July 21st 2020
+* Add variables to allow users to specify their desired VM image
+    * `image_publisher` to allow for creation of multiple VMs
+    * `image_offer` to allow for creation of multiple VMs
+    * `image_sku` to allow for creation of multiple VMs
+    * `image_version` to allow for creation of multiple VMs
 # Tamr Azure VM module - v0.3.0 - June 4th 2020
 * Add configurable `instance_count` to allow for creation of multiple VMs
 * Add example for elasticsearch cluster creation
