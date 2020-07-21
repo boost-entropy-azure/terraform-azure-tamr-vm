@@ -45,11 +45,11 @@ resource "azurerm_virtual_machine" "tamr-vm" {
 
     # if an image reference id is provided, these variables should be empty
     # else if the user provided their own image reference values, use those
-    # else use the Ubuntu 18.04 image
-    publisher = var.image_reference != null ? "" : var.image_publisher != null ? var.image_publisher : "Canonical"
-    offer     = var.image_reference != null ? "" : var.image_offer != null ? var.image_offer : "UbuntuServer"
-    sku       = var.image_reference != null ? "" : var.image_sku != null ? var.image_sku : "18.04-LTS"
-    version   = var.image_reference != null ? "" : var.image_version != null ? var.image_version : "latest"
+    # else use the default Ubuntu 18.04 image
+    publisher = var.image_reference != null ? "" : var.image_publisher
+    offer     = var.image_reference != null ? "" : var.image_offer
+    sku       = var.image_reference != null ? "" : var.image_sku
+    version   = var.image_reference != null ? "" : var.image_version
   }
 
   storage_os_disk {

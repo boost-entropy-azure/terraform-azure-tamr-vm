@@ -59,31 +59,31 @@ variable "image_reference" {
 variable "image_publisher" {
   description = <<EOF
   The publisher of the Azure Virtual Machines Marketplace Image.
-  (e.g. 'Canonical', 'MicrosoftWindowsServer')
+  (e.g. 'Canonical', 'RedHat')
   https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.publisher
   EOF
   type        = string
-  default     = null
+  default     = "Canonical"
 }
 
 variable "image_offer" {
   description = <<EOF
   The offer type of the Azure Virtual Machines Marketplace Image.
-  (e.g. 'UbuntuServer', 'WindowsServer')
+  (e.g. 'UbuntuServer', 'RHEL')
   https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.offer
   EOF
   type        = string
-  default     = null
+  default     = "UbuntuServer"
 }
 
 variable "image_sku" {
   description = <<EOF
   The Stock-Keeping Unit (SKU) of the Azure Virtual Machines Marketplace Image.
-  (e.g. '18.04-LTS', '2019-Datacenter')
+  (e.g. '18.04-LTS', '7.6')
   https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.sku
   EOF
   type        = string
-  default     = null
+  default     = "18.04-LTS"
 }
 
 variable "image_version" {
@@ -93,7 +93,7 @@ variable "image_version" {
     https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.version
   EOF
   type        = string
-  default     = null
+  default     = "latest"
 }
 
 variable "admin_username" {
