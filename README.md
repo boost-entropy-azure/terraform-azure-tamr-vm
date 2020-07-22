@@ -63,7 +63,11 @@ This modules creates:
 | enable\_tls | Whether or not to enable TLS | `bool` | `true` | no |
 | enable\_zk\_port | Whether or not to enable Zookeeper | `bool` | `true` | no |
 | grafana\_port | Port hosting Grafana access | `number` | `31101` | no |
-| image\_reference | Base image for VM | `string` | `null` | no |
+| image\_offer | The offer type of the Azure Virtual Machines Marketplace Image.<br>  (e.g. 'UbuntuServer', 'RHEL')<br>  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.offer) | `string` | `"UbuntuServer"` | no |
+| image\_publisher | The publisher of the Azure Virtual Machines Marketplace Image.<br>  (e.g. 'Canonical', 'RedHat')<br>  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.publisher) | `string` | `"Canonical"` | no |
+| image\_reference | The Azure Resource Manager (ARM) resource identifier of the Virtual Machine Image or Shared Image Gallery Image.<br>    Computes Compute Nodes of the Pool will be created using this Image Id.<br>    This is of the form `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}`.<br>    [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.virtualmachineimageid) | `string` | `null` | no |
+| image\_sku | The Stock-Keeping Unit (SKU) of the Azure Virtual Machines Marketplace Image.<br>  (e.g. '18.04-LTS', '7.6')<br>  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.sku) | `string` | `"18.04-LTS"` | no |
+| image\_version | The version of the Azure Virtual Machines Marketplace Image.<br>    (e.g. 'latest')<br>    [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.version) | `string` | `"latest"` | no |
 | ingress\_cidr\_blocks | CIDR blocks to attach to security groups for ingress | `list(string)` | `[]` | no |
 | instance\_count | Number of VMs to create | `number` | `1` | no |
 | kibana\_port | Port hosting Kibana access | `number` | `5601` | no |

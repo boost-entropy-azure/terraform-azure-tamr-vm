@@ -23,10 +23,6 @@ resource "azurerm_network_interface_security_group_association" "nsg-assoc" {
   network_security_group_id = azurerm_network_security_group.tamr-vm-sg.id
 }
 
-locals {
-  resource_from_id = "${var.image_reference != null ? true : false}"
-}
-
 resource "azurerm_virtual_machine" "tamr-vm" {
   count = var.instance_count
 
@@ -44,13 +40,16 @@ resource "azurerm_virtual_machine" "tamr-vm" {
   delete_data_disks_on_termination = true
 
   storage_image_reference {
-    # If image ID is defined, use that. Else use Ubuntu 18.04 image
+    # if image ID is defined, use that
     id = var.image_reference
 
-    publisher = local.resource_from_id ? "" : "Canonical"
-    offer     = local.resource_from_id ? "" : "UbuntuServer"
-    sku       = local.resource_from_id ? "" : "18.04-LTS"
-    version   = local.resource_from_id ? "" : "latest"
+    # if an image reference id is provided, these variables should be empty
+    # else if the user provided their own image reference values, use those
+    # else use the default Ubuntu 18.04 image
+    publisher = var.image_reference != null ? "" : var.image_publisher
+    offer     = var.image_reference != null ? "" : var.image_offer
+    sku       = var.image_reference != null ? "" : var.image_sku
+    version   = var.image_reference != null ? "" : var.image_version
   }
 
   storage_os_disk {
