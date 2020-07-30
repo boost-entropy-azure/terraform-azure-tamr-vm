@@ -1,38 +1,37 @@
-resource "azurerm_resource_group" "vm-rg" {
-  name     = "tamrVmResourceGroup"
-  location = "East US"
+data "azurerm_resource_group" "vm-rg" {
+  name     = "tamrDevGroup"
 }
 
 resource "azurerm_virtual_network" "vm-vnet" {
-  name = "tamrVmVirtualNetwork"
+  name = "example-minimal-VirtualNetwork"
 
-  location            = azurerm_resource_group.vm-rg.location
-  resource_group_name = azurerm_resource_group.vm-rg.name
+  location            = data.azurerm_resource_group.vm-rg.location
+  resource_group_name = data.azurerm_resource_group.vm-rg.name
 
   address_space = ["1.2.3.0/25"]
 }
 
 resource "azurerm_subnet" "vm-subnet" {
-  name = "tamrVmSubnet"
+  name = "example-minimal-Subnet"
 
-  resource_group_name = azurerm_resource_group.vm-rg.name
+  resource_group_name = data.azurerm_resource_group.vm-rg.name
 
   virtual_network_name = azurerm_virtual_network.vm-vnet.name
   address_prefixes     = ["1.2.3.0/28"]
 }
 
 resource "azurerm_application_security_group" "sg" {
-  name                = "vmApplicationSG"
-  location            = "East US"
-  resource_group_name = azurerm_resource_group.vm-rg.name
+  name                = "example-minimal-ApplicationSG"
+  location            = data.azurerm_resource_group.vm-rg.location
+  resource_group_name = data.azurerm_resource_group.vm-rg.name
 }
 
 module "vm" {
   source = "../../"
 
   vm_name             = "minimal-example-vm"
-  resource_group_name = azurerm_resource_group.vm-rg.name
-  location            = azurerm_resource_group.vm-rg.location
+  resource_group_name = data.azurerm_resource_group.vm-rg.name
+  location            = data.azurerm_resource_group.vm-rg.location
   subnet_id           = azurerm_subnet.vm-subnet.id
   vm_size             = "Standard_D2s_v3"
   managed_disk_type   = "Premium_LRS"

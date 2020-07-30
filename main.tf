@@ -64,4 +64,5 @@ module "tamr-vm" {
   tags = var.tags
 
   network_security_group_id = module.tamr-network-security-group.sg_id
+  associate_security_group = true
 }

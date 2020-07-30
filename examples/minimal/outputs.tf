@@ -8,7 +8,7 @@ output "vm-vnet-id" {
 }
 
 output "vm-resource-group-id" {
-  value       = azurerm_resource_group.vm-rg.id
+  value       = data.azurerm_resource_group.vm-rg.id
   description = "The resource group created for the VM"
 }
 

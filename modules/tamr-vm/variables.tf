@@ -125,3 +125,9 @@ variable "network_security_group_id" {
   type = string
   default = null
 }
+
+variable "associate_security_group" {
+  description = "Whether or not to associate the NICs to the given security group."
+  type = string
+  default = false
+}
