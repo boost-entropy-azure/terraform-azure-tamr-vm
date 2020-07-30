@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "tamr-vm-nic" {
 }
 
 resource "azurerm_network_interface_security_group_association" "nsg-assoc" {
-  count = var.associate_security_group == false ? 0 : var.instance_count
+  count = var.standalone ? 0 : var.instance_count
 
   network_interface_id      = azurerm_network_interface.tamr-vm-nic[count.index].id
   network_security_group_id = var.network_security_group_id

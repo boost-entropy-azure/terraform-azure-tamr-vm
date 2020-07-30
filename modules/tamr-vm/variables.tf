@@ -126,8 +126,12 @@ variable "network_security_group_id" {
   default = null
 }
 
-variable "associate_security_group" {
-  description = "Whether or not to associate the NICs to the given security group."
-  type = string
-  default = false
+variable "standalone" {
+  description = <<EOF
+    Whether or not this module is standalone.
+    Currently this only determines whether or not to create an
+    association between the NIC and the provided security group.
+  EOF
+  type = bool
+  default = true
 }
