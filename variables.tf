@@ -47,10 +47,10 @@ variable "disk_size_gb" {
 
 variable "image_reference" {
   description = <<EOF
-    The Azure Resource Manager (ARM) resource identifier of the Virtual Machine Image or Shared Image Gallery Image.
-    Computes Compute Nodes of the Pool will be created using this Image Id.
-    This is of the form `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}`.
-    [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.virtualmachineimageid)
+  The Azure Resource Manager (ARM) resource identifier of the Virtual Machine Image or Shared Image Gallery Image.
+  Computes Compute Nodes of the Pool will be created using this Image Id.
+  This is of the form `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionId}`.
+  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.virtualmachineimageid)
   EOF
   type        = string
   default     = null
@@ -88,9 +88,9 @@ variable "image_sku" {
 
 variable "image_version" {
   description = <<EOF
-    The version of the Azure Virtual Machines Marketplace Image.
-    (e.g. 'latest')
-    [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.version)
+  The version of the Azure Virtual Machines Marketplace Image.
+  (e.g. 'latest')
+  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.version)
   EOF
   type        = string
   default     = "latest"
