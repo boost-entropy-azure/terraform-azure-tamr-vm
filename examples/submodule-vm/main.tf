@@ -1,10 +1,10 @@
 resource "azurerm_resource_group" "vm-rg" {
-  name     = "azure-tamr-minimal-example"
+  name     = "azure-tamr-vm-vm-example"
   location = "East US 2"
 }
 
 resource "azurerm_virtual_network" "vm-vnet" {
-  name = "example-minimal-VirtualNetwork"
+  name = "example-submodule-vm-vm-vnet"
 
   location            = azurerm_resource_group.vm-rg.location
   resource_group_name = azurerm_resource_group.vm-rg.name
@@ -13,7 +13,7 @@ resource "azurerm_virtual_network" "vm-vnet" {
 }
 
 resource "azurerm_subnet" "vm-subnet" {
-  name = "example-minimal-Subnet"
+  name = "example-submodule-vm-vm-subnet"
 
   resource_group_name = azurerm_resource_group.vm-rg.name
 
@@ -21,25 +21,18 @@ resource "azurerm_subnet" "vm-subnet" {
   address_prefixes     = ["1.2.3.0/28"]
 }
 
-resource "azurerm_application_security_group" "sg" {
-  name                = "example-minimal-ApplicationSG"
-  location            = azurerm_resource_group.vm-rg.location
-  resource_group_name = azurerm_resource_group.vm-rg.name
-}
-
+# create the VM as a standalone submodule by passing it the
+# without a network security group
 module "vm" {
-  source = "../../"
+  source = "../../modules/tamr-vm/"
 
-  vm_name             = "minimal-example-vm"
+  vm_name             = "example-submodule-vm-vm"
   resource_group_name = azurerm_resource_group.vm-rg.name
   location            = azurerm_resource_group.vm-rg.location
   subnet_id           = azurerm_subnet.vm-subnet.id
   vm_size             = "Standard_D2s_v3"
   managed_disk_type   = "Premium_LRS"
   disk_size_gb        = 100
-
-  ingress_cidr_blocks            = ["2.3.4.5/32"]
-  application_security_group_ids = [azurerm_application_security_group.sg.id]
 
   admin_username = "fakeUsername"
   ssh_key_data   = file("~/.ssh/id_rsa.pub")

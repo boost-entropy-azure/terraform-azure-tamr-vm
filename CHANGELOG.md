@@ -1,3 +1,8 @@
+# Tamr Azure VM module - v0.3.2 - August 4th 2020
+* Split into two standalone submodules:
+    * One for the VM and Network Interface Card (NIC)
+    * One for the Network Security Group (NSG)
+* Check out the `/examples` folder for the usage of these individual submodules
 # Tamr Azure VM module - v0.3.1 - July 21st 2020
 * Add variables to allow users to specify their desired VM image
     * `image_publisher` to allow for creation of multiple VMs

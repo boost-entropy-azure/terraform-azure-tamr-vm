@@ -1,10 +1,10 @@
 resource "azurerm_resource_group" "vm-rg" {
-  name     = "tamrVmResourceGroup"
-  location = "East US"
+  name     = "azure-tamr-redhat-custom-image-example"
+  location = "East US 2"
 }
 
 resource "azurerm_virtual_network" "vm-vnet" {
-  name = "tamrVmVirtualNetwork"
+  name = "example-redhat-VirtualNetwork"
 
   location            = azurerm_resource_group.vm-rg.location
   resource_group_name = azurerm_resource_group.vm-rg.name
@@ -13,7 +13,7 @@ resource "azurerm_virtual_network" "vm-vnet" {
 }
 
 resource "azurerm_subnet" "vm-subnet" {
-  name = "tamrVmSubnet"
+  name = "example-redhat-Subnet"
 
   resource_group_name = azurerm_resource_group.vm-rg.name
 
@@ -22,8 +22,8 @@ resource "azurerm_subnet" "vm-subnet" {
 }
 
 resource "azurerm_application_security_group" "sg" {
-  name                = "vmApplicationSG"
-  location            = "East US"
+  name                = "example-redhat-ApplicationSG"
+  location            = azurerm_resource_group.vm-rg.location
   resource_group_name = azurerm_resource_group.vm-rg.name
 }
 
