@@ -68,7 +68,7 @@ resource "azurerm_virtual_machine" "tamr-vm" {
   os_profile_linux_config {
     disable_password_authentication = true
     ssh_keys {
-      key_data = var.ssh_key_data
+      key_data = file(var.path_to_ssh_key)
       path     = "/home/${var.admin_username}/.ssh/authorized_keys"
     }
   }

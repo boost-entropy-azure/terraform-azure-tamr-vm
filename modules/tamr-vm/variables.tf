@@ -44,8 +44,8 @@ variable "vm_name" {
   default     = "tamr-vm"
 }
 
-variable "ssh_key_data" {
-  description = "SSH key"
+variable "path_to_ssh_key" {
+  description = "Local file path to a public SSH key"
   type        = string
 }
 

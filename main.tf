@@ -50,7 +50,7 @@ module "tamr-vm" {
   subnet_name                     = var.subnet_name
   vnet_name                       = var.vnet_name
   existing_network_resource_group = var.existing_network_resource_group
-  ssh_key_data                    = var.ssh_key_data
+  path_to_ssh_key                 = var.path_to_ssh_key
 
   managed_disk_type = var.managed_disk_type
   disk_size_gb      = var.disk_size_gb

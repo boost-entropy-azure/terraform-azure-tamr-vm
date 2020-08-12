@@ -45,8 +45,8 @@ This modules creates:
 |------|-------------|------|---------|:--------:|
 | existing\_network\_resource\_group | Resource group which owns the VNet | `string` | n/a | yes |
 | location | Location | `string` | n/a | yes |
+| path\_to\_ssh\_key | Local file path to a public SSH key | `string` | n/a | yes |
 | resource\_group\_name | Name of resource group | `string` | n/a | yes |
-| ssh\_key\_data | SSH key | `string` | n/a | yes |
 | subnet\_name | Name of the subnet in which to deploy HDInsight HBase resources | `string` | n/a | yes |
 | vm\_size | Size of machine on which to deploy Tamr | `string` | n/a | yes |
 | vnet\_name | Name of the virtual network in which to deploy HBase resources | `string` | n/a | yes |
