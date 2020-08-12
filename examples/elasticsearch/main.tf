@@ -31,13 +31,15 @@ module "es" {
   source         = "../../"
   instance_count = 3
 
-  vm_name             = "es-example-vm"
-  resource_group_name = azurerm_resource_group.es-rg.name
-  location            = azurerm_resource_group.es-rg.location
-  subnet_id           = azurerm_subnet.es-subnet.id
-  vm_size             = "Standard_D2s_v3"
-  managed_disk_type   = "Premium_LRS"
-  disk_size_gb        = 100
+  vm_name                         = "es-example-vm"
+  resource_group_name             = azurerm_resource_group.es-rg.name
+  location                        = azurerm_resource_group.es-rg.location
+  subnet_name                     = azurerm_subnet.es-subnet.name
+  vnet_name                       = azurerm_virtual_network.es-vnet.name
+  existing_network_resource_group = azurerm_virtual_network.es-vnet.resource_group_name
+  vm_size                         = "Standard_D2s_v3"
+  managed_disk_type               = "Premium_LRS"
+  disk_size_gb                    = 100
 
   ingress_cidr_blocks            = ["2.3.4.5/32"]
   application_security_group_ids = [azurerm_application_security_group.sg.id]
@@ -53,6 +55,6 @@ module "es" {
   enable_zk_port          = false
   enable_tamr_port        = false
 
-  admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  admin_username  = "fakeUsername"
+  path_to_ssh_key = "~/.ssh/id_rsa.pub"
 }

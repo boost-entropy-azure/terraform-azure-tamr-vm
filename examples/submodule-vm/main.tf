@@ -26,14 +26,16 @@ resource "azurerm_subnet" "vm-subnet" {
 module "vm" {
   source = "../../modules/tamr-vm/"
 
-  vm_name             = "example-submodule-vm-vm"
-  resource_group_name = azurerm_resource_group.vm-rg.name
-  location            = azurerm_resource_group.vm-rg.location
-  subnet_id           = azurerm_subnet.vm-subnet.id
-  vm_size             = "Standard_D2s_v3"
-  managed_disk_type   = "Premium_LRS"
-  disk_size_gb        = 100
+  vm_name                         = "example-submodule-vm-vm"
+  resource_group_name             = azurerm_resource_group.vm-rg.name
+  location                        = azurerm_resource_group.vm-rg.location
+  subnet_name                     = azurerm_subnet.vm-subnet.name
+  vnet_name                       = azurerm_virtual_network.vm-vnet.name
+  existing_network_resource_group = azurerm_virtual_network.vm-vnet.resource_group_name
+  vm_size                         = "Standard_D2s_v3"
+  managed_disk_type               = "Premium_LRS"
+  disk_size_gb                    = 100
 
-  admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  admin_username  = "fakeUsername"
+  path_to_ssh_key = "~/.ssh/id_rsa.pub"
 }
