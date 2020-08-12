@@ -7,7 +7,7 @@ resource "azurerm_network_interface" "tamr-vm-nic" {
 
   ip_configuration {
     name                          = "${var.vm_name}-nic"
-    subnet_id                     = var.subnet_id
+    subnet_id                     = data.azurerm_subnet.subnet_selected.id
     private_ip_address_allocation = "Dynamic"
 
     public_ip_address_id = var.public_ip

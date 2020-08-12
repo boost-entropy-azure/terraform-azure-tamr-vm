@@ -43,11 +43,13 @@ This modules creates:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| existing\_network\_resource\_group | Resource group which owns the VNet | `string` | n/a | yes |
 | location | Location | `string` | n/a | yes |
 | resource\_group\_name | Name of resource group | `string` | n/a | yes |
 | ssh\_key\_data | SSH key | `string` | n/a | yes |
-| subnet\_id | Subnet ID in which to deploy VM | `string` | n/a | yes |
+| subnet\_name | Name of the subnet in which to deploy HDInsight HBase resources | `string` | n/a | yes |
 | vm\_size | Size of machine on which to deploy Tamr | `string` | n/a | yes |
+| vnet\_name | Name of the virtual network in which to deploy HBase resources | `string` | n/a | yes |
 | admin\_username | Admin username | `string` | `"ubuntu"` | no |
 | disk\_size\_gb | Disk size | `number` | `1000` | no |
 | image\_offer | The offer type of the Azure Virtual Machines Marketplace Image.<br>  (e.g. 'UbuntuServer', 'RHEL')<br>  [Azure Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.batch.imagereference.offer) | `string` | `"UbuntuServer"` | no |

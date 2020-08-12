@@ -38,10 +38,10 @@ module "vm" {
   managed_disk_type   = "Premium_LRS"
   disk_size_gb        = 100
 
-  image_publisher     = "RedHat"
-  image_offer         = "RHEL"
-  image_sku           = "7.6"
-  image_version       = "latest"
+  image_publisher = "RedHat"
+  image_offer     = "RHEL"
+  image_sku       = "7.6"
+  image_version   = "latest"
 
   ingress_cidr_blocks            = ["2.3.4.5/32"]
   application_security_group_ids = [azurerm_application_security_group.sg.id]

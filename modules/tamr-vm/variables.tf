@@ -17,8 +17,24 @@ variable "vm_size" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "Subnet ID in which to deploy VM"
+variable "subnet_name" {
+  description = "Name of the subnet in which to deploy Tamr VM"
+  type        = string
+}
+
+variable "vnet_name" {
+  description = "Name of the virtual network in which to deploy Tamr VM"
+  type        = string
+}
+
+data "azurerm_subnet" "subnet_selected" {
+  resource_group_name  = var.existing_network_resource_group
+  virtual_network_name = var.vnet_name
+  name                 = var.subnet_name
+}
+
+variable "existing_network_resource_group" {
+  description = "Resource group which owns the VNet"
   type        = string
 }
 
@@ -122,8 +138,8 @@ variable "instance_count" {
 
 variable "network_security_group_id" {
   description = "The id of the security group to use for this VM."
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "standalone" {
@@ -132,6 +148,6 @@ variable "standalone" {
   Currently this only determines whether or not to create an
   association between the NIC and the provided security group.
   EOF
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
