@@ -202,7 +202,6 @@ variable "zk_port" {
 
 variable "application_security_group_ids" {
   description = "List of Application security group IDs"
-  default     = []
   type        = list(string)
 }
 
