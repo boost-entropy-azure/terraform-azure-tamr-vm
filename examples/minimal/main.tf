@@ -38,7 +38,7 @@ module "vm" {
   managed_disk_type   = "Premium_LRS"
   disk_size_gb        = 100
 
-  ingress_cidr_blocks            = ["2.3.4.5/32"]
+  ingress_cidr_blocks            = ["10.0.0.0/24"]
   application_security_group_ids = [azurerm_application_security_group.sg.id]
 
   admin_username = "fakeUsername"

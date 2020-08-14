@@ -216,7 +216,6 @@ resource "azurerm_network_security_rule" "tamr-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.tamr_port
@@ -237,7 +236,6 @@ resource "azurerm_network_security_rule" "kibana-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.kibana_port
@@ -258,7 +256,6 @@ resource "azurerm_network_security_rule" "grafana-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.grafana_port
@@ -279,7 +276,6 @@ resource "azurerm_network_security_rule" "tls-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = 443
@@ -300,7 +296,6 @@ resource "azurerm_network_security_rule" "es-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.elasticsearch_port
@@ -321,7 +316,6 @@ resource "azurerm_network_security_rule" "ssh-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = 22
@@ -340,7 +334,6 @@ resource "azurerm_network_security_rule" "http-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = 80
@@ -361,7 +354,6 @@ resource "azurerm_network_security_rule" "auth-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.auth_port
@@ -382,7 +374,6 @@ resource "azurerm_network_security_rule" "persistence-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.persistence_port
@@ -403,7 +394,6 @@ resource "azurerm_network_security_rule" "zk-app-group-rule" {
 
   source_application_security_group_ids = var.application_security_group_ids
   source_port_range                     = "*"
-  source_address_prefix                 = "*"
 
   destination_address_prefix = "*"
   destination_port_range     = var.zk_port

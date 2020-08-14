@@ -7,7 +7,9 @@ module "tamr-network-security-group" {
   vm_name = var.vm_name
 
   ingress_cidr_blocks = var.ingress_cidr_blocks
+  application_security_group_ids = var.application_security_group_ids
 
+  # ports
   enable_tamr_port = var.enable_tamr_port
   tamr_port = var.tamr_port
 
@@ -32,7 +34,6 @@ module "tamr-network-security-group" {
   enable_tls = var.enable_tls
   enable_ssh = var.enable_ssh
 
-  application_security_group_ids = var.application_security_group_ids
   tags = var.tags
 }
 
