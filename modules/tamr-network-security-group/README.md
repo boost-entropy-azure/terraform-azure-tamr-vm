@@ -29,15 +29,13 @@ This modules creates:
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| azurerm | =2.11.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| azurerm | =2.11.0 |
+| azurerm | n/a |
 
 ## Inputs
 
