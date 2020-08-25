@@ -26,6 +26,9 @@ This modules creates:
 * n storage disks
 * 1 security group
 
+# Known Issues
+When running `terraform destroy`, you may encounter a failure due to something not having fully deleted. To resolve this, wait a few seconds and then re-run `terraform destroy`.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
