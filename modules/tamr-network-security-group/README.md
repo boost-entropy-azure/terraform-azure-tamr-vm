@@ -8,7 +8,7 @@ internal microservices.
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
 module "minimal" {
-  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm?ref=0.2.0"
+  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm//modules/tamr-network-security-group?ref=0.3.3"
 }
 ```
 ## Minimal
@@ -29,15 +29,13 @@ This modules creates:
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| azurerm | =2.11.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| azurerm | =2.11.0 |
+| azurerm | n/a |
 
 ## Inputs
 

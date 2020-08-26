@@ -3,10 +3,6 @@ variable "resource_group_name" {
   type        = string
 }
 
-data "azurerm_resource_group" "tamr_rg" {
-  name = var.resource_group_name
-}
-
 variable "location" {
   description = "Location"
   type        = string
@@ -206,7 +202,6 @@ variable "zk_port" {
 
 variable "application_security_group_ids" {
   description = "List of Application security group IDs"
-  default     = []
   type        = list(string)
 }
 

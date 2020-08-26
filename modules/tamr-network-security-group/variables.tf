@@ -3,10 +3,6 @@ variable "resource_group_name" {
   type        = string
 }
 
-data "azurerm_resource_group" "tamr_rg" {
-  name = var.resource_group_name
-}
-
 variable "location" {
   description = "Location"
   type        = string

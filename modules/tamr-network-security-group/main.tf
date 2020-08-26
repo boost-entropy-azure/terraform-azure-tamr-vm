@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "tamr-vm-sg" {
   name                = "${var.vm_name}-sg"
-  location            = data.azurerm_resource_group.tamr_rg.location
-  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  location            = var.location
+  resource_group_name = var.resource_group_name
 
   tags = var.tags
 }
@@ -22,7 +22,7 @@ resource "azurerm_network_security_rule" "tamr-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.tamr_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -42,7 +42,7 @@ resource "azurerm_network_security_rule" "kibana-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.kibana_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -62,7 +62,7 @@ resource "azurerm_network_security_rule" "grafana-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.grafana_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -82,7 +82,7 @@ resource "azurerm_network_security_rule" "tls-rule" {
   destination_address_prefix = "*"
   destination_port_range     = 443
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -102,7 +102,7 @@ resource "azurerm_network_security_rule" "es-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.elasticsearch_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -122,7 +122,7 @@ resource "azurerm_network_security_rule" "ssh-rule" {
   destination_address_prefix = "*"
   destination_port_range     = 22
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -140,7 +140,7 @@ resource "azurerm_network_security_rule" "http-rule" {
   destination_address_prefix = "*"
   destination_port_range     = 80
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -160,7 +160,7 @@ resource "azurerm_network_security_rule" "auth-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.auth_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -180,7 +180,7 @@ resource "azurerm_network_security_rule" "persistence-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.persistence_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -200,7 +200,7 @@ resource "azurerm_network_security_rule" "zk-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.zk_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -220,7 +220,7 @@ resource "azurerm_network_security_rule" "tamr-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.tamr_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -240,7 +240,7 @@ resource "azurerm_network_security_rule" "kibana-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.kibana_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -260,7 +260,7 @@ resource "azurerm_network_security_rule" "grafana-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.grafana_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -280,7 +280,7 @@ resource "azurerm_network_security_rule" "tls-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = 443
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -300,7 +300,7 @@ resource "azurerm_network_security_rule" "es-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.elasticsearch_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -320,7 +320,7 @@ resource "azurerm_network_security_rule" "ssh-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = 22
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -338,7 +338,7 @@ resource "azurerm_network_security_rule" "http-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = 80
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -358,7 +358,7 @@ resource "azurerm_network_security_rule" "auth-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.auth_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -378,7 +378,7 @@ resource "azurerm_network_security_rule" "persistence-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.persistence_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }
 
@@ -398,6 +398,6 @@ resource "azurerm_network_security_rule" "zk-app-group-rule" {
   destination_address_prefix = "*"
   destination_port_range     = var.zk_port
 
-  resource_group_name         = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name         = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.tamr-vm-sg.name
 }

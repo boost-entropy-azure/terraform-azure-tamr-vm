@@ -3,7 +3,7 @@ resource "azurerm_network_interface" "tamr-vm-nic" {
 
   name                = "${var.vm_name}-${count.index}-nic"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name = var.resource_group_name
 
   ip_configuration {
     name                          = "${var.vm_name}-nic"
@@ -28,7 +28,7 @@ resource "azurerm_virtual_machine" "tamr-vm" {
 
   name                = "${var.vm_name}-${count.index}"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.tamr_rg.name
+  resource_group_name = var.resource_group_name
 
   network_interface_ids = [
     azurerm_network_interface.tamr-vm-nic[count.index].id,
