@@ -53,6 +53,6 @@ module "es" {
   enable_zk_port          = false
   enable_tamr_port        = false
 
-  admin_username = "fakeUsername"
-  path_to_ssh_key   = "~/.ssh/id_rsa.pub"
+  admin_username  = "fakeUsername"
+  path_to_ssh_key = "~/.ssh/id_rsa.pub"
 }
