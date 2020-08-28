@@ -28,7 +28,7 @@ resource "azurerm_application_security_group" "sg" {
 }
 
 module "es" {
-  source   = "../../"
+  source         = "../../"
   instance_count = 3
 
   vm_name             = "es-example-vm"

@@ -46,8 +46,8 @@ No provider.
 |------|-------------|------|---------|:--------:|
 | application\_security\_group\_ids | List of Application security group IDs | `list(string)` | n/a | yes |
 | location | Location | `string` | n/a | yes |
+| path\_to\_ssh\_key | Local file path to a public SSH key | `string` | n/a | yes |
 | resource\_group\_name | Name of resource group | `string` | n/a | yes |
-| ssh\_key\_data | SSH key | `string` | n/a | yes |
 | subnet\_id | Subnet ID in which to deploy VM | `string` | n/a | yes |
 | vm\_size | Size of machine on which to deploy Tamr | `string` | n/a | yes |
 | admin\_username | Admin username | `string` | `"ubuntu"` | no |

@@ -24,8 +24,8 @@ variable "vm_name" {
   default     = "tamr-vm"
 }
 
-variable "ssh_key_data" {
-  description = "SSH key"
+variable "path_to_ssh_key" {
+  description = "Local file path to a public SSH key"
   type        = string
 }
 
@@ -118,8 +118,8 @@ variable "instance_count" {
 
 variable "network_security_group_id" {
   description = "The id of the security group to use for this VM."
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "standalone" {
@@ -128,6 +128,6 @@ variable "standalone" {
   Currently this only determines whether or not to create an
   association between the NIC and the provided security group.
   EOF
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
