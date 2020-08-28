@@ -35,5 +35,5 @@ module "vm" {
   disk_size_gb        = 100
 
   admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  path_to_ssh_key   = "~/.ssh/id_rsa.pub"
 }

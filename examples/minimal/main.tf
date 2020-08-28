@@ -42,5 +42,5 @@ module "vm" {
   application_security_group_ids = [azurerm_application_security_group.sg.id]
 
   admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  path_to_ssh_key   = "~/.ssh/id_rsa.pub"
 }

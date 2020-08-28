@@ -54,5 +54,5 @@ module "es" {
   enable_tamr_port        = false
 
   admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  path_to_ssh_key   = "~/.ssh/id_rsa.pub"
 }
