@@ -28,7 +28,7 @@ resource "azurerm_application_security_group" "sg" {
 }
 
 module "es" {
-  source   = "../../"
+  source         = "../../"
   instance_count = 3
 
   vm_name             = "es-example-vm"
@@ -53,6 +53,6 @@ module "es" {
   enable_zk_port          = false
   enable_tamr_port        = false
 
-  admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  admin_username  = "fakeUsername"
+  path_to_ssh_key = "~/.ssh/id_rsa.pub"
 }

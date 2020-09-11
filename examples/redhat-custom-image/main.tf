@@ -38,14 +38,14 @@ module "vm" {
   managed_disk_type   = "Premium_LRS"
   disk_size_gb        = 100
 
-  image_publisher     = "RedHat"
-  image_offer         = "RHEL"
-  image_sku           = "7.6"
-  image_version       = "latest"
+  image_publisher = "RedHat"
+  image_offer     = "RHEL"
+  image_sku       = "7.6"
+  image_version   = "latest"
 
   ingress_cidr_blocks            = ["2.3.4.5/32"]
   application_security_group_ids = [azurerm_application_security_group.sg.id]
 
-  admin_username = "fakeUsername"
-  ssh_key_data   = file("~/.ssh/id_rsa.pub")
+  admin_username  = "fakeUsername"
+  path_to_ssh_key = "~/.ssh/id_rsa.pub"
 }
