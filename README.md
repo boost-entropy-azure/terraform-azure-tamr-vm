@@ -87,6 +87,7 @@ No provider.
 | nic\_ids | The ID(s) of the Network Interface(s) |
 | sg\_id | The ID of the security group |
 | vm\_ids | The ID(s) of the Tamr VM(s) |
+| vm\_ips | The private IP(s) of the created resource(s) |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
