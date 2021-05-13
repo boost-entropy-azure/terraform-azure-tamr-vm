@@ -12,3 +12,8 @@ output "sg_id" {
   value       = module.tamr-network-security-group.sg_id
   description = "The ID of the security group"
 }
+
+output "vm_ips" {
+  value       = module.tamr-vm.vm_ips
+  description = "The private IP(s) of the created resource(s)"
+}
