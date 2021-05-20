@@ -1,4 +1,8 @@
 # Tamr Azure VM module
+# v0.4.0 - May 13th 2021
+* Fix network rule names
+* Add new output `vm_ips` for VM private IPs
+
 # v0.3.4 - August 27th 2020
 * Variable updates to be consistent with other Azure modules
     * ssh_key_data replaced with path_to_ssh_key

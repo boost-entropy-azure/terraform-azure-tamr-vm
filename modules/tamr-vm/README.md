@@ -67,6 +67,7 @@ No requirements.
 |------|-------------|
 | nic\_ids | The ID(s) of the Network Interface(s) |
 | vm\_ids | The ID(s) of the Tamr VM(s) |
+| vm\_ips | The private IP(s) of the created resource(s) |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

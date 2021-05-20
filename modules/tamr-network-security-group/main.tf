@@ -207,7 +207,7 @@ resource "azurerm_network_security_rule" "zk-rule" {
 resource "azurerm_network_security_rule" "tamr-app-group-rule" {
   count = var.enable_tamr_port ? 1 : 0
 
-  name        = "App security group Tamr"
+  name        = "ASG_Tamr"
   description = "Tamr UI and API access from allowed application security groups"
   direction   = "Inbound"
   priority    = 1011
@@ -227,7 +227,7 @@ resource "azurerm_network_security_rule" "tamr-app-group-rule" {
 resource "azurerm_network_security_rule" "kibana-app-group-rule" {
   count = var.enable_kibana_port ? 1 : 0
 
-  name        = "App security group Kibana"
+  name        = "ASG_Kibana"
   description = "Kibana port from allowed application security groups"
   direction   = "Inbound"
   priority    = 1012
@@ -247,7 +247,7 @@ resource "azurerm_network_security_rule" "kibana-app-group-rule" {
 resource "azurerm_network_security_rule" "grafana-app-group-rule" {
   count = var.enable_grafana_port ? 1 : 0
 
-  name        = "App security group Grafana"
+  name        = "ASG_Grafana"
   description = "Grafana port from allowed application security groups"
   direction   = "Inbound"
   priority    = 1013
@@ -267,7 +267,7 @@ resource "azurerm_network_security_rule" "grafana-app-group-rule" {
 resource "azurerm_network_security_rule" "tls-app-group-rule" {
   count = var.enable_tls ? 1 : 0
 
-  name        = "App security group HTTPS"
+  name        = "ASG_HTTPS"
   description = "TLS from allowed application security groups"
   direction   = "Inbound"
   priority    = 1014
@@ -287,7 +287,7 @@ resource "azurerm_network_security_rule" "tls-app-group-rule" {
 resource "azurerm_network_security_rule" "es-app-group-rule" {
   count = var.enable_elasticsearch_port ? 1 : 0
 
-  name        = "App security group Elasticsearch"
+  name        = "ASG_Elasticsearch"
   description = "Elasticsearch from allowed application security groups"
   direction   = "Inbound"
   priority    = 1015
@@ -307,7 +307,7 @@ resource "azurerm_network_security_rule" "es-app-group-rule" {
 resource "azurerm_network_security_rule" "ssh-app-group-rule" {
   count = var.enable_ssh ? 1 : 0
 
-  name        = "App security group SSH"
+  name        = "ASG_SSH"
   description = "SSH from allowed application security groups"
   direction   = "Inbound"
   priority    = 1016
@@ -325,7 +325,7 @@ resource "azurerm_network_security_rule" "ssh-app-group-rule" {
 }
 
 resource "azurerm_network_security_rule" "http-app-group-rule" {
-  name        = "App security group HTTP"
+  name        = "ASG_HTTP"
   description = "HTTP from allowed application security groups"
   direction   = "Inbound"
   priority    = 1017
@@ -345,7 +345,7 @@ resource "azurerm_network_security_rule" "http-app-group-rule" {
 resource "azurerm_network_security_rule" "auth-app-group-rule" {
   count = var.enable_auth_port ? 1 : 0
 
-  name        = "App security group Auth"
+  name        = "ASG_Auth"
   description = "Auth from allowed application security groups"
   direction   = "Inbound"
   priority    = 1018
@@ -365,7 +365,7 @@ resource "azurerm_network_security_rule" "auth-app-group-rule" {
 resource "azurerm_network_security_rule" "persistence-app-group-rule" {
   count = var.enable_persistence_port ? 1 : 0
 
-  name        = "App security group Persistence"
+  name        = "ASG_Persistence"
   description = "Persistence from allowed application security groups"
   direction   = "Inbound"
   priority    = 1019
@@ -385,7 +385,7 @@ resource "azurerm_network_security_rule" "persistence-app-group-rule" {
 resource "azurerm_network_security_rule" "zk-app-group-rule" {
   count = var.enable_zk_port ? 1 : 0
 
-  name        = "App security group ZK"
+  name        = "ASG_ZK"
   description = "Zookeeper from allowed application security groups"
   direction   = "Inbound"
   priority    = 1020
