@@ -9,6 +9,6 @@ output "nic_ids" {
 }
 
 output "vm_ips" {
-  value = azurerm_network_interface.tamr-vm-nic.*.private_ip_address
+  value       = azurerm_network_interface.tamr-vm-nic.*.private_ip_address
   description = "The private IP(s) of the created resource(s)"
 }

@@ -1,4 +1,8 @@
 # Tamr Azure VM module
+
+# v0.5.0 - June 1st 2021
+* Upgrade `azurerm` provider
+
 # v0.4.0 - May 13th 2021
 * Fix network rule names
 * Add new output `vm_ips` for VM private IPs

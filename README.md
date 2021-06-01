@@ -35,6 +35,7 @@ When running `terraform destroy`, you may encounter a failure due to something n
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12 |
+| azurerm | >= 2.60.0 |
 
 ## Providers
 
