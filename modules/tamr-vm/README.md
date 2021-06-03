@@ -8,7 +8,7 @@ internal microservices.
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
 module "minimal" {
-  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm//modules/tamr-vm?ref=1.0.0"
+  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm//modules/tamr-vm?ref=x.y.z"
 }
 ```
 ## Minimal
