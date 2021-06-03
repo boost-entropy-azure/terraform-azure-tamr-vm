@@ -8,7 +8,7 @@ internal microservices.
 Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
 ```
 module "minimal" {
-  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm?ref=0.3.4"
+  source = "git::https://github.com/Datatamer/terraform-azure-tamr-vm?ref=x.y.z"
 }
 ```
 ## Minimal
@@ -35,6 +35,7 @@ When running `terraform destroy`, you may encounter a failure due to something n
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12 |
+| azurerm | >= 2.60.0 |
 
 ## Providers
 
